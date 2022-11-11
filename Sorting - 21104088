@@ -1,0 +1,86 @@
+Explanation:
+
+a) No of comparisons in selection sort is less or equal to that of comparisons in bubble sort.
+    Ex) arr[10,8,4,9,1] no. of comparison using selection sort is very less than that of bubble sort.
+(b) Number of swaps needed to sort above array through selection sort is 2 and number of swaps needed to sort this array through bubble sort is 9.
+    So in bubble sort no. of swaps are usually more than selection sort.
+
+
+
+//SELECTION SORT
+***
+using namespace std;
+void swap(int *a, int *b) {
+int temp = *a; 
+*a=*b;
+*b = temp;
+}
+
+
+void printArray(int array[], int size) {
+for (int i = 0; i < size; i++) 
+ {
+   cout << array[i] << " ";
+ }
+cout << endl; 
+}
+
+void selectionSort(int array[], int size) 
+{ 
+  for (int step = 0; step < size - 1; step++)
+  {
+     int min_idx = step;
+     for (int i = step + 1; i < size; i++) 
+     {
+   
+      if (array[i] < array[min_idx])
+      min_idx = i; 
+     }
+  
+     swap(&array[min_idx], &array[step]); }
+}
+
+ int main() {
+int data[] = {10 , 8 , 4 , 9 , 1};
+int size = sizeof(data) / sizeof(data[0]); 
+selectionSort(data, size);
+cout << "Sorted array in Ascending Order:\n"; 
+printArray(data, size);
+}
+***
+
+
+
+//BUBBLE SORT
+***
+
+using namespace std;
+
+void bubbleSort(int arr[], int n)
+{
+  int i, j;
+  for (i = 0; i < n - 1; i++)
+ 
+  {  for (j = 0; j < n - i - 1; j++)
+         if (arr[j] > arr[j + 1])
+            swap(arr[j], arr[j + 1]);
+  }
+}
+
+void printArray(int arr[], int size)
+{
+   int i;
+   for (i = 0; i < size; i++)
+       cout << arr[i] << " ";
+   cout << endl;
+}
+
+int main()
+{
+   int arr[] = {10, 8, 4, 9 ,1};
+   int N = sizeof(arr) / sizeof(arr[0]); 
+   bubbleSort(arr, N);
+   cout << "Sorted array: \n";
+   printArray(arr, N);
+   return 0;
+}
